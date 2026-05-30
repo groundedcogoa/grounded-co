@@ -9,6 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+  /* --- BRAND SPECIFIC FONTS --- */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@400;600;700;800&family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700;900;400i;700i&family=La+Belle+Aurore&family=Roboto+Slab:wght@700&family=Cinzel:wght@700&display=swap');
+
   /* ─── TOKENS ─────────────────────────────── */
   :root {
     --cream:      #F4EEE0;
@@ -234,7 +237,7 @@
   .truth { background: var(--green); }
   .truth .eyebrow { color: rgba(244,238,224,0.5); }
   .truth h2 {
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(26px, 4vw, 42px); 
     color: var(--cream);
     max-width: 680px;
     margin: 16px 0 48px;
@@ -243,65 +246,204 @@
   .truth h2 em { font-style: italic; color: rgba(184,92,56,0.85); }
   .truth-body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px;
     align-items: start;
   }
-  @media (max-width: 640px) { .truth-body { grid-template-columns: 1fr; gap: 40px; } }
+  @media (max-width: 768px) { .truth-body { grid-template-columns: 1fr; gap: 40px; } }
+  
   .truth-stat {
-    padding-bottom: 32px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    margin-bottom: 32px;
+    margin: 0;
+    padding: 0;
+    border: none;
   }
-  .truth-stat:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
   .truth-stat-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 3.5vw, 42px);
+    font-size: 28px; 
     font-weight: 400;
     color: var(--cream);
     line-height: 1.15;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   .truth-stat p {
     font-size: 15px;
     color: rgba(244,238,224,0.6);
     line-height: 1.7;
   }
-  .truth-bridge {
-    font-size: 20px !important;
-    font-weight: 300 !important;
-    color: rgba(244,238,224,0.85) !important;
-    line-height: 1.6 !important;
-    font-family: 'Cormorant Garamond', serif;
+
+  /* ─── FOR WHO ─────────────────────────────── */
+  .forwho { background: var(--cream); }
+  .forwho-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
   }
-  .truth-signals {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  @media (max-width: 768px) {
+    .forwho-inner { grid-template-columns: 1fr; gap: 48px; }
   }
-  .signal {
+  .forwho h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    color: var(--green);
+    margin: 16px 0 24px;
+    line-height: 1.15;
+  }
+  .forwho h2 em { font-style: italic; color: var(--terra); }
+  .forwho > .container > .forwho-inner > div > p {
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 380px;
+  }
+  .biz-types {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--rule);
+  }
+  @media (min-width: 900px) {
+    .biz-types { grid-template-columns: repeat(4, 1fr); }
+  }
+  .biz-type {
+    background: var(--cream);
+    padding: 24px 28px;
+    transition: background 0.2s;
+  }
+  .biz-type:hover { background: var(--cream-dark); }
+  .biz-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .biz-type h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--green);
+    margin-bottom: 4px;
+    font-family: 'Jost', sans-serif;
+  }
+  .biz-type p {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── BRANDS SECTION ─────────────────────── */
+  .brands-section {
+    background: var(--cream);
+    padding: 80px 0 20px 0;
+  }
+  .brands-header h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 300;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+  
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 40px 0;
     display: flex;
     align-items: center;
-    gap: 16px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 4px;
-    padding: 20px 24px;
-    min-height: 64px;
   }
-  .signal-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--terra);
-    flex-shrink: 0;
+  .marquee-content {
+    display: flex;
+    gap: 4rem; 
+    align-items: center; 
+    animation: scroll 120s linear infinite; 
   }
-  .signal p {
-    font-size: 14.5px;
-    color: rgba(244,238,224,0.7);
-    line-height: 1.5;
-    margin: 0;
+  .marquee-content:hover {
+    animation-play-state: paused;
   }
+  .logo-item {
+    font-size: 20px; 
+    opacity: 0.6; 
+    filter: grayscale(100%);
+    transition: all 0.4s ease;
+    cursor: default;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+    color: #333333; 
+  }
+  .logo-item:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  /* Brands Font Specifics */
+  .brand-sprinklr { font-family: 'Open Sans', sans-serif; font-weight: 600; color: #333333; letter-spacing: -0.5px; }
+  .brand-siemens { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; color: #009999; } 
+  .brand-connectwise { font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; color: #005F9E; letter-spacing: 0.05em; }
+  .brand-bu { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: uppercase; color: #CC0000; }
+  .brand-dxl { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; color: #111111; }
+  .brand-carefree { font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; color: #E03C31; } 
+  .brand-circlek { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; color: #DA291C; background: #111111; color: white; padding: 2px 6px; } 
+  .brand-bloombergphil { font-family: 'Playfair Display', serif; font-weight: 400; color: #111111; }
+  .brand-ngs { font-family: 'Montserrat', sans-serif; font-weight: 400; text-transform: uppercase; border-left: 4px solid #FFCC00; padding-left: 8px; color: #111111; line-height: 1.1; }
+  .brand-motherson { font-family: 'Inter', sans-serif; font-weight: 600; text-transform: lowercase; color: #555555; }
+  .brand-tcs { font-family: 'Lato', sans-serif; font-weight: 300; text-transform: lowercase; color: #111111; }
+  .brand-intelizign { font-family: 'Montserrat', sans-serif; font-weight: 500; text-transform: uppercase; color: #333333; letter-spacing: 1px; }
+  .brand-ranal { font-family: 'Inter', sans-serif; font-weight: 600; color: #111111; }
+  .brand-vst { font-family: 'Montserrat', sans-serif; font-weight: 900; font-style: italic; color: #111111; }
+  .brand-tata { font-family: 'Lato', sans-serif; font-weight: 700; text-transform: uppercase; color: #005EB8; }
+  .brand-jyoti { font-family: 'Montserrat', sans-serif; font-weight: 900; font-style: italic; text-transform: uppercase; border-top: 3px solid #111111; border-bottom: 3px solid #111111; color: #111111; }
+  .brand-sonata { font-family: 'Playfair Display', serif; font-weight: 400; text-transform: uppercase; color: #111111; }
+  .brand-saloc { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: uppercase; color: #111111; }
+  .brand-mathworks { font-family: 'Playfair Display', serif; font-weight: 400; color: #005696; }
+  .brand-vicks { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; color: #008850; }
+  .brand-seaworld { font-family: 'Playfair Display', serif; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; color: #00539B; }
+  .brand-penn { font-family: 'Playfair Display', serif; font-weight: 700; color: #011F5B; }
+  .brand-revlon { font-family: 'Montserrat', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; color: #111111; }
+  .brand-uhs { font-family: 'Roboto Slab', serif; font-weight: 700; text-transform: uppercase; letter-spacing: -1px; color: #111111; }
+  .brand-toro { font-family: 'Roboto Slab', serif; font-weight: 700; text-transform: uppercase; color: #CC0000; }
+  .brand-santander { font-family: 'Lato', sans-serif; font-weight: 700; color: #EC0000; }
+  .brand-stayfree { font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; color: #111111; }
+  .brand-pur { font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; color: #111111; }
+  .brand-optimum { font-family: 'Inter', sans-serif; font-weight: 800; text-transform: lowercase; color: #0099D8; }
+  .brand-mgb { font-family: 'Open Sans', sans-serif; font-weight: 600; color: #005A8B; }
+  .brand-redlobster { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: uppercase; color: #C8102E; }
+  .brand-rocket { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; color: #111111; }
+  .brand-organon { font-family: 'Playfair Display', serif; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; color: #111111; }
+  .brand-oxo { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; color: #111111; }
+  .brand-giii { font-family: 'Inter', sans-serif; font-weight: 100; text-transform: uppercase; letter-spacing: 4px; color: #111111; }
+  .brand-ets { font-family: 'Open Sans', sans-serif; font-weight: 700; font-style: italic; color: #003469; }
+  .brand-toefl { font-family: 'Open Sans', sans-serif; font-weight: 800; color: #111111; letter-spacing: 1px; } 
+  .brand-edgewell { font-family: 'Inter', sans-serif; font-weight: 400; color: #00965E; }
+  .brand-wbur { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: lowercase; color: #111111; }
+  .brand-dana { font-family: 'Open Sans', sans-serif; font-weight: 700; color: #005581; }
+  .brand-jimmy { font-family: 'Open Sans', sans-serif; font-weight: 700; color: #111111; }
+  .brand-autozone { font-family: 'Open Sans', sans-serif; font-weight: 800; text-transform: uppercase; font-style: italic; color: #D52B1E; letter-spacing: -0.05em; }
+  .brand-natgeo { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: uppercase; border: 2px solid #FFCC00; padding: 0 6px; color: #111111; line-height: 1.2; }
+  .brand-bloomberg { font-family: 'Lato', sans-serif; font-weight: 900; letter-spacing: -0.02em; color: #000000; }
+  .brand-nasdaq { font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #005F9E; }
+  .brand-chobani { font-family: 'Roboto Slab', serif; font-weight: 700; color: #003632; }
+  .brand-bell { font-family: 'Open Sans', sans-serif; font-weight: 800; color: #005499; letter-spacing: -1px; }
+  .brand-burlington { font-family: 'Playfair Display', serif; font-weight: 700; color: #C8102E; }
+  .brand-avon { font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #000000; }
+  .brand-blackbaud { font-family: 'Lato', sans-serif; font-weight: 700; text-transform: lowercase; color: #0081C6; }
+  .brand-magicpin { font-family: 'Montserrat', sans-serif; font-weight: 900; letter-spacing: -1px; color: #D8232A; }
+  .brand-elcita { font-family: 'Inter', sans-serif; font-weight: 300; text-transform: uppercase; letter-spacing: 0.2em; color: #111111; }
+  .brand-gopigeon { font-family: 'Open Sans', sans-serif; font-weight: 700; text-transform: lowercase; color: #111111; }
+  .brand-chaipe { font-family: 'La Belle Aurore', cursive; font-weight: 700; color: #3A4D3F; }
+  .brand-hydroflask { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; color: #111111; }
+  .brand-grayscale { font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; color: #111111; }
+  .brand-allina { font-family: 'Open Sans', sans-serif; font-weight: 700; color: #0072CE; }
+  .brand-novant { font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; color: #542E91; }
+  .brand-helen { font-family: 'Playfair Display', serif; font-weight: 700; color: #111111; }
+  .brand-fmglobal { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; color: #111111; }
+  .brand-jefferies { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #111111; }
+  .brand-nutrisystem { font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; color: #8DC63F; }
+  .brand-3m { font-family: 'Lato', sans-serif; font-weight: 900; color: #FF0000; letter-spacing: -2px; }
+  .brand-prolim { font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #111111; }
+  .brand-dds { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; color: #111111; }
 
   /* ─── SERVICES ───────────────────────────── */
   .services { background: var(--cream); }
@@ -421,13 +563,16 @@
   }
   .how-header h2 em { font-style: italic; color: var(--terra); }
   .how-header p { max-width: 480px; font-size: 16px; }
+  
   .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
     position: relative;
+    z-index: 1; /* Keep steps above the connecting line */
   }
   @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+  
   .steps::before {
     content: '';
     position: absolute;
@@ -437,19 +582,22 @@
     height: 1px;
     background: linear-gradient(to right, var(--terra), var(--brown), var(--terra));
     opacity: 0.3;
+    z-index: -1; /* Push the line behind the circles */
   }
   @media (max-width: 640px) { .steps::before { display: none; } }
+  
   .step { padding: 0 28px 0 0; }
   .step:last-child { padding-right: 0; }
   @media (max-width: 640px) {
     .step { padding: 0 0 40px; border-left: 2px solid var(--rule); padding-left: 24px; margin-left: 20px; }
     .step:last-child { padding-bottom: 0; }
   }
+  
   .step-num {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: var(--cream);
+    background: var(--cream-dark); /* Matches section background so line doesn't show inside */
     border: 1px solid var(--rule);
     display: flex;
     align-items: center;
@@ -460,6 +608,8 @@
     color: var(--terra);
     margin-bottom: 28px;
     flex-shrink: 0;
+    position: relative; 
+    z-index: 2; /* Ensures circle sits on top */
   }
   @media (max-width: 640px) {
     .step-num {
@@ -487,62 +637,6 @@
     font-size: 15px;
   }
 
-  /* ─── FOR WHO ─────────────────────────────── */
-  .forwho { background: var(--cream); }
-  .forwho-inner {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 80px;
-    align-items: center;
-  }
-  @media (max-width: 768px) {
-    .forwho-inner { grid-template-columns: 1fr; gap: 48px; }
-  }
-  .forwho h2 {
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 300;
-    color: var(--green);
-    margin: 16px 0 24px;
-    line-height: 1.15;
-  }
-  .forwho h2 em { font-style: italic; color: var(--terra); }
-  .forwho > .container > .forwho-inner > div > p {
-    font-size: 15px;
-    line-height: 1.8;
-    max-width: 380px;
-  }
-  .biz-types {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: var(--rule);
-  }
-  @media (min-width: 900px) {
-    .biz-types { grid-template-columns: repeat(4, 1fr); }
-  }
-  .biz-type {
-    background: var(--cream);
-    padding: 24px 28px;
-    transition: background 0.2s;
-  }
-  .biz-type:hover { background: var(--cream-dark); }
-  .biz-icon {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-  .biz-type h4 {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--green);
-    margin-bottom: 4px;
-    font-family: 'Jost', sans-serif;
-  }
-  .biz-type p {
-    font-size: 12.5px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
   /* ─── FAQ ────────────────────────────────── */
   .faq { background: var(--cream); }
   .faq-header { margin-bottom: 56px; }
@@ -561,24 +655,42 @@
     background: var(--rule);
   }
   @media (max-width: 640px) { .faq-grid { grid-template-columns: 1fr; } }
+  
   .faq-item {
     background: var(--cream);
     padding: 36px 32px;
     transition: background 0.2s;
+    cursor: pointer;
   }
   .faq-item:hover { background: var(--cream-dark); }
-  .faq-item h4 {
+  
+  .faq-item summary {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 500;
     color: var(--green);
-    margin-bottom: 14px;
+    margin-bottom: 0;
     line-height: 1.3;
+    list-style: none; /* Removes the default tiny arrow */
+    outline: none;
+    position: relative;
+    padding-right: 20px;
   }
+  
+  /* Hides the default arrow for Safari/Chrome */
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-item[open] summary {
+    margin-bottom: 14px;
+  }
+  
   .faq-item p {
     font-size: 14.5px;
     color: var(--ink-soft);
     line-height: 1.75;
+    margin: 0;
   }
 
   /* ─── CTA BAND ───────────────────────────── */
@@ -692,7 +804,6 @@
 </head>
 <body>
 
-<!-- ─── NAV ─────────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
     <div class="wordmark">grounded <span>co.</span></div>
@@ -703,7 +814,6 @@
   </div>
 </nav>
 
-<!-- ─── HERO ─────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-bg-circle"></div>
   <div class="hero-bg-leaf">🌿</div>
@@ -721,172 +831,26 @@
   </div>
 </section>
 
-<hr class="rule">
-
-<!-- ─── TRUTH ─────────────────────────────────────── -->
 <section class="truth">
   <div class="container">
     <div class="eyebrow">The honest reality</div>
     <h2>You've built something <em>real.</em><br>Now let's make sure it keeps growing.</h2>
     <div class="truth-body">
-      <div>
-        <div class="truth-stat">
-          <div class="truth-stat-headline">Leads disappear in the chat.</div>
-          <p>WhatsApp is full of messages. Without a system, you're relying on memory — and money is slipping through.</p>
-        </div>
-        <div class="truth-stat">
-          <div class="truth-stat-headline">Admin eats your day.</div>
-          <p>Bookings, orders, records — all tracked manually. Hours spent on tasks a simple system can handle in seconds.</p>
-        </div>
-        <div class="truth-stat">
-          <div class="truth-stat-headline">Growth feels stuck.</div>
-          <p class="truth-bridge">We're here to help you cross that bridge — while building upon systems your team is already familiar with.</p>
-        </div>
+      <div class="truth-stat">
+        <div class="truth-stat-headline">Leads disappear in the chat.</div>
+        <p>WhatsApp is full of messages. Without a system, you're relying on memory — and money is slipping through.</p>
       </div>
-      <div class="truth-signals">
-        <div class="signal">
-          <div class="signal-dot"></div>
-          <p>Customers message on WhatsApp but you lose track of who said what</p>
-        </div>
-        <div class="signal">
-          <div class="signal-dot"></div>
-          <p>Bookings, orders, or leads are tracked in notebooks or memory</p>
-        </div>
-        <div class="signal">
-          <div class="signal-dot"></div>
-          <p>You follow up on your own — or worse, forget to follow up at all</p>
-        </div>
-        <div class="signal">
-          <div class="signal-dot"></div>
-          <p>Word-of-mouth has taken you far, but growth feels stuck</p>
-        </div>
-        <div class="signal">
-          <div class="signal-dot"></div>
-          <p>You've thought about going digital, but don't know where to start</p>
-        </div>
+      <div class="truth-stat">
+        <div class="truth-stat-headline">Admin eats your day.</div>
+        <p>Bookings, orders, records — all tracked manually. Hours spent on tasks a simple system can handle in seconds.</p>
+      </div>
+      <div class="truth-stat">
+        <div class="truth-stat-headline">Growth feels stuck.</div>
+        <p>We're here to help you cross that bridge — while building upon systems your team is already familiar with.</p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ─── SERVICES ───────────────────────────────────── -->
-<section class="services">
-  <div class="container">
-    <div class="services-header reveal">
-      <div class="eyebrow">What we do</div>
-      <h2>Four ways we help your<br>business <em>run better.</em></h2>
-      <p>Each service is designed to remove a specific bottleneck in your growth. Start where it hurts most.</p>
-    </div>
-    <div class="services-grid">
-
-      <!-- Card 1 -->
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-num">01</div>
-        <div class="service-stage">Operational Systems</div>
-        <h3>Know Your Numbers.<br><em>100% Visibility</em> Over Leads, Stock & Cash.</h3>
-        <p>Move from scattered workflows and WhatsApp coordination to structured operational systems with accountability, visibility, and smoother execution.</p>
-        <ul class="service-includes">
-          <li>Lead management systems — WhatsApp + Google based</li>
-          <li>Warehouse workflow systems</li>
-          <li>Inventory visibility systems</li>
-          <li>ERP identification that will ROI fastest</li>
-          <li>Receivables tracking</li>
-          <li>Internal workflow automation</li>
-          <li>Reporting dashboards</li>
-        </ul>
-      </div>
-
-      <!-- Card 2 — featured -->
-      <div class="service-card service-card-featured reveal reveal-delay-2">
-        <div class="service-num">02</div>
-        <div class="service-stage">Process Design</div>
-        <h3>Remove Founder Dependency &<br><em>Standardise Growth.</em></h3>
-        <p>Create repeatable operational systems so your business can scale without depending entirely on individual people or your constant supervision.</p>
-        <ul class="service-includes">
-          <li>Sales process design</li>
-          <li>ERP implementation</li>
-          <li>Team accountability structures</li>
-          <li>SOP documentation</li>
-          <li>Operational audits</li>
-          <li>Staff onboarding systems</li>
-          <li>Process optimisation</li>
-        </ul>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-num">03</div>
-        <div class="service-stage">Growth Infrastructure</div>
-        <h3>Expand to New Locations Without<br><em>Multiplying Chaos.</em></h3>
-        <p>Build the foundation required for expansion, stronger customer retention, and sustainable growth without constant fire-fighting.</p>
-        <ul class="service-includes">
-          <li>AI lead generation systems</li>
-          <li>Customer retention workflows</li>
-          <li>Referral systems</li>
-          <li>Market expansion planning</li>
-          <li>Multi-location operational setup</li>
-          <li>Team training systems</li>
-          <li>Marketing operations</li>
-        </ul>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="service-card reveal reveal-delay-4">
-        <div class="service-num">04</div>
-        <div class="service-stage">Digital Modernisation</div>
-        <h3>Future-Proof Your Operations with<br><em>Smart, Simple Workflows.</em></h3>
-        <p>Help traditional businesses modernise how they communicate, present themselves, and operate in a changing market — without overwhelming complexity.</p>
-        <ul class="service-includes">
-          <li>Business website upgrade</li>
-          <li>Expanding to new locations backed by data-driven decisions</li>
-          <li>Digital lead generation</li>
-          <li>WhatsApp workflows</li>
-          <li>Reporting systems</li>
-          <li>Social media systems</li>
-          <li>E-commerce planning</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ─── HOW IT WORKS ───────────────────────────────── -->
-<section class="how">
-  <div class="container">
-    <div class="how-header reveal">
-      <div class="eyebrow">How it works</div>
-      <h2>Simple by <em>design.</em></h2>
-      <p>No long contracts. No confusing tech. Just a clear process from start to finish.</p>
-    </div>
-    <div class="steps">
-      <div class="step reveal reveal-delay-1">
-        <div class="step-num">1</div>
-        <h4>We listen</h4>
-        <p>One honest conversation about where your business is today and where you want it to go. No jargon, no pitch — just us understanding your situation.</p>
-        <span class="step-aside">Free, no obligation</span>
-      </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step-num">2</div>
-        <h4>We build</h4>
-        <p>We set up what you actually need — nothing more, nothing less. We keep you in the loop at every step, and we don't disappear after setup.</p>
-        <span class="step-aside">Done in days, not months</span>
-      </div>
-      <div class="step reveal reveal-delay-3">
-        <div class="step-num">3</div>
-        <h4>You run</h4>
-        <p>We hand it over clearly, show you and your team how it works, and stay available if anything comes up. The system is yours — we just built it.</p>
-        <span class="step-aside">Always a real person to call</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ─── FOR WHO ─────────────────────────────────────── -->
 <section class="forwho">
   <div class="container">
     <div class="forwho-inner">
@@ -941,7 +905,212 @@
   </div>
 </section>
 
-<!-- ─── FAQ ─────────────────────────────────────── -->
+<section class="brands-section reveal">
+  <div class="container">
+    <div class="brands-header">
+      <h2>Bringing world-class operational standards to Indian businesses.</h2>
+      <div class="eyebrow">Brands we've contributed to</div>
+    </div>
+  </div>
+  
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span class="logo-item brand-sprinklr">Sprinklr</span>
+      <span class="logo-item brand-siemens">Siemens</span>
+      <span class="logo-item brand-autozone">AutoZone</span>
+      <span class="logo-item brand-bloomberg">Bloomberg</span>
+      <span class="logo-item brand-nasdaq">NASDAQ</span>
+      <span class="logo-item brand-chobani">Chobani</span>
+      <span class="logo-item brand-bell">Bell</span>
+      <span class="logo-item brand-burlington">Burlington</span>
+      <span class="logo-item brand-avon">AVON</span>
+      <span class="logo-item brand-blackbaud">blackbaud</span>
+      <span class="logo-item brand-connectwise">ConnectWise</span>
+      <span class="logo-item brand-bu">Boston University</span>
+      <span class="logo-item brand-dxl">DXL</span>
+      <span class="logo-item brand-carefree">Carefree</span>
+      <span class="logo-item brand-circlek">Circle K</span>
+      <span class="logo-item brand-bloombergphil">Bloomberg Philanthropies</span>
+      <span class="logo-item brand-ngs">National Geographic<br>Society</span>
+      <span class="logo-item brand-motherson">motherson</span>
+      <span class="logo-item brand-tcs">tcs</span>
+      <span class="logo-item brand-intelizign">INTELIZIGN</span>
+      <span class="logo-item brand-ranal">Ranal Software</span>
+      <span class="logo-item brand-vst">VST Tillers</span>
+      <span class="logo-item brand-tata">TATA Consultancy Services</span>
+      <span class="logo-item brand-jyoti">JYOTI CNC</span>
+      <span class="logo-item brand-sonata">Sonata Software</span>
+      <span class="logo-item brand-saloc">SALOC</span>
+      <span class="logo-item brand-mathworks">MathWorks</span>
+      <span class="logo-item brand-vicks">VICKS</span>
+      <span class="logo-item brand-seaworld">SeaWorld</span>
+      <span class="logo-item brand-penn">Penn</span>
+      <span class="logo-item brand-revlon">REVLON</span>
+      <span class="logo-item brand-uhs">UHS</span>
+      <span class="logo-item brand-toro">TORO</span>
+      <span class="logo-item brand-santander">Santander</span>
+      <span class="logo-item brand-stayfree">Stayfree</span>
+      <span class="logo-item brand-pur">PUR</span>
+      <span class="logo-item brand-optimum">optimum</span>
+      <span class="logo-item brand-mgb">Mass General Brigham</span>
+      <span class="logo-item brand-redlobster">Red Lobster</span>
+      <span class="logo-item brand-rocket">Rocket Mortgage</span>
+      <span class="logo-item brand-organon">ORGANON</span>
+      <span class="logo-item brand-oxo">OXO</span>
+      <span class="logo-item brand-giii">G-III</span>
+      <span class="logo-item brand-ets">ETS</span>
+      <span class="logo-item brand-toefl">TOEFL</span>
+      <span class="logo-item brand-edgewell">Edgewell</span>
+      <span class="logo-item brand-wbur">wbur</span>
+      <span class="logo-item brand-dana">Dana-Farber</span>
+      <span class="logo-item brand-jimmy">The Jimmy Fund</span>
+      <span class="logo-item brand-magicpin">MagicPin</span>
+      <span class="logo-item brand-elcita">ELCITA</span>
+      <span class="logo-item brand-gopigeon">GoPigeon</span>
+      <span class="logo-item brand-chaipe">ChaiPe</span>
+      <span class="logo-item brand-hydroflask">Hydro Flask</span>
+      <span class="logo-item brand-grayscale">Grayscale</span>
+      <span class="logo-item brand-allina">Allina Health</span>
+      <span class="logo-item brand-novant">Novant Health</span>
+      <span class="logo-item brand-helen">Helen of Troy</span>
+      <span class="logo-item brand-fmglobal">FM Global</span>
+      <span class="logo-item brand-jefferies">Jefferies</span>
+      <span class="logo-item brand-nutrisystem">Nutrisystem</span>
+      <span class="logo-item brand-3m">3M</span>
+      <span class="logo-item brand-prolim">Prolim</span>
+      <span class="logo-item brand-dds">DDS</span>
+      
+      <span class="logo-item brand-sprinklr">Sprinklr</span>
+      <span class="logo-item brand-siemens">Siemens</span>
+      <span class="logo-item brand-autozone">AutoZone</span>
+      <span class="logo-item brand-bloomberg">Bloomberg</span>
+      <span class="logo-item brand-nasdaq">NASDAQ</span>
+      <span class="logo-item brand-chobani">Chobani</span>
+      <span class="logo-item brand-bell">Bell</span>
+      <span class="logo-item brand-burlington">Burlington</span>
+      <span class="logo-item brand-avon">AVON</span>
+      <span class="logo-item brand-blackbaud">blackbaud</span>
+      <span class="logo-item brand-connectwise">ConnectWise</span>
+      <span class="logo-item brand-bu">Boston University</span>
+      <span class="logo-item brand-dxl">DXL</span>
+      <span class="logo-item brand-carefree">Carefree</span>
+      <span class="logo-item brand-circlek">Circle K</span>
+      <span class="logo-item brand-bloombergphil">Bloomberg Philanthropies</span>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="eyebrow">What we do</div>
+      <h2>Four ways we help your<br>business <em>run better.</em></h2>
+      <p>Each service is designed to remove a specific bottleneck in your growth. Start where it hurts most.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">01</div>
+        <div class="service-stage">Operational Systems</div>
+        <h3>Know Your Numbers.<br><em>100% Visibility</em> Over Leads, Stock & Cash.</h3>
+        <p>Move from scattered workflows and WhatsApp coordination to structured operational systems with accountability, visibility, and smoother execution.</p>
+        <ul class="service-includes">
+          <li>Lead management systems — WhatsApp + Google based</li>
+          <li>Warehouse workflow systems</li>
+          <li>Inventory visibility systems</li>
+          <li>ERP identification that will ROI fastest</li>
+          <li>Receivables tracking</li>
+          <li>Internal workflow automation</li>
+          <li>Reporting dashboards</li>
+        </ul>
+      </div>
+
+      <div class="service-card service-card-featured reveal reveal-delay-2">
+        <div class="service-num">02</div>
+        <div class="service-stage">Process Design</div>
+        <h3>Remove Founder Dependency &<br><em>Standardise Growth.</em></h3>
+        <p>Create repeatable operational systems so your business can scale without depending entirely on individual people or your constant supervision.</p>
+        <ul class="service-includes">
+          <li>Sales process design</li>
+          <li>ERP implementation</li>
+          <li>Team accountability structures</li>
+          <li>SOP documentation</li>
+          <li>Operational audits</li>
+          <li>Staff onboarding systems</li>
+          <li>Process optimisation</li>
+        </ul>
+      </div>
+
+      <div class="service-card service-card-featured reveal reveal-delay-3">
+        <div class="service-num">03</div>
+        <div class="service-stage">Growth Infrastructure</div>
+        <h3>Expand to New Locations Without<br><em>Multiplying Chaos.</em></h3>
+        <p>Build the foundation required for expansion, stronger customer retention, and sustainable growth without constant fire-fighting.</p>
+        <ul class="service-includes">
+          <li>AI lead generation systems</li>
+          <li>Customer retention workflows</li>
+          <li>Referral systems</li>
+          <li>Market expansion planning</li>
+          <li>Multi-location operational setup</li>
+          <li>Team training systems</li>
+          <li>Marketing operations</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-num">04</div>
+        <div class="service-stage">Digital Modernisation</div>
+        <h3>Future-Proof Your Operations with<br><em>Smart, Simple Workflows.</em></h3>
+        <p>Help traditional businesses modernise how they communicate, present themselves, and operate in a changing market — without overwhelming complexity.</p>
+        <ul class="service-includes">
+          <li>Business website upgrade</li>
+          <li>Expanding to new locations backed by data-driven decisions</li>
+          <li>Digital lead generation</li>
+          <li>WhatsApp workflows</li>
+          <li>Reporting systems</li>
+          <li>Social media systems</li>
+          <li>E-commerce planning</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="how">
+  <div class="container">
+    <div class="how-header reveal">
+      <div class="eyebrow">How it works</div>
+      <h2>Simple by <em>design.</em></h2>
+      <p>No long contracts. No confusing tech. Just a clear process from start to finish.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">1</div>
+        <h4>We listen</h4>
+        <p>One honest conversation about where your business is today and where you want it to go. No jargon, no pitch — just us understanding your situation.</p>
+        <span class="step-aside">Free, no obligation</span>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <h4>We build</h4>
+        <p>We set up what you actually need — nothing more, nothing less. We keep you in the loop at every step, and we don't disappear after setup.</p>
+        <span class="step-aside">Done in days, not months</span>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <h4>You run</h4>
+        <p>We hand it over clearly, show you and your team how it works, and stay available if anything comes up. The system is yours — we just built it.</p>
+        <span class="step-aside">Always a real person to call</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
 <section class="faq">
   <div class="container">
     <div class="faq-header reveal">
@@ -950,35 +1119,34 @@
       <p>If you have a question that isn't here, just ask us directly — we're always happy to talk.</p>
     </div>
     <div class="faq-grid">
-      <div class="faq-item reveal reveal-delay-1">
-        <h4>How long is a typical engagement?</h4>
+      <details class="faq-item reveal reveal-delay-1">
+        <summary>How long is a typical engagement?</summary>
         <p>It depends on where you are. Foundation work is usually 6–8 weeks. Scaling work runs 3–6 months. We agree on outcomes upfront — when we hit them, we can wrap or continue.</p>
-      </div>
-      <div class="faq-item reveal reveal-delay-2">
-        <h4>Do you work with specific industries?</h4>
+      </details>
+      <details class="faq-item reveal reveal-delay-2">
+        <summary>Do you work with specific industries?</summary>
         <p>We've worked across real estate, raw materials, retail, hospitality, wellness, and more. The principles of growth are similar; the execution adapts to your market.</p>
-      </div>
-      <div class="faq-item reveal reveal-delay-1">
-        <h4>Can you work with an existing team?</h4>
+      </details>
+      <details class="faq-item reveal reveal-delay-1">
+        <summary>Can you work with an existing team?</summary>
         <p>Yes. We work best with founders, teams, and organisations ready to be hands-on partners. We're not external consultants — we embed and work alongside your people.</p>
-      </div>
-      <div class="faq-item reveal reveal-delay-2">
-        <h4>What if we don't have baseline metrics?</h4>
+      </details>
+      <details class="faq-item reveal reveal-delay-2">
+        <summary>What if we don't have baseline metrics?</summary>
         <p>We build them. One of our first outputs is clarity on what we're measuring. You can't manage what you don't measure — so we start there.</p>
-      </div>
-      <div class="faq-item reveal reveal-delay-1">
-        <h4>What if the engagement isn't working?</h4>
+      </details>
+      <details class="faq-item reveal reveal-delay-1">
+        <summary>What if the engagement isn't working?</summary>
         <p>We address it immediately. If there's no fit, we'll be direct about it. Our reputation is built on results, not delivered hours.</p>
-      </div>
-      <div class="faq-item reveal reveal-delay-2">
-        <h4>Can you work remotely or do I need you on-site?</h4>
+      </details>
+      <details class="faq-item reveal reveal-delay-2">
+        <summary>Can you work remotely or do I need you on-site?</summary>
         <p>Both. We're flexible on location — what matters is that we're integrated into your workflows. Most work is remote with strategic in-person sessions.</p>
-      </div>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- ─── CTA BAND ───────────────────────────────────── -->
 <section class="cta-band">
   <div class="eyebrow">Ready when you are</div>
   <h2>Start with a<br><em>conversation.</em></h2>
@@ -990,7 +1158,6 @@
   <p class="cta-band-note">We typically reply within a few hours.</p>
 </section>
 
-<!-- ─── FOOTER ─────────────────────────────────────── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-wordmark">grounded co.</div>
@@ -998,7 +1165,6 @@
   </div>
 </footer>
 
-<!-- ─── SCROLL REVEAL ─────────────────────────────── -->
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1013,4 +1179,5 @@
 
 </body>
 </html>
+
 
